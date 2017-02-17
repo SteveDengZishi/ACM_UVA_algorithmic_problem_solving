@@ -4,7 +4,7 @@ Using C++ 5.3.0 with -std=c++11
 
 Some templates are written by myself and some referred from other authors and then modified to either general or specific usage.
 
-//  Created by DENG ZISHI on 2/17/17.
-//  Copyright © 2017 DENG ZISHI. All rights reserved.
+Created by DENG ZISHI on 2/17/17.
+Copyright © 2017 DENG ZISHI. All rights reserved.
 
 
