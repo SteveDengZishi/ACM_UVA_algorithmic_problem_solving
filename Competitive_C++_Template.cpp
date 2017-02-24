@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib> // To use atoi(), abs(), malloc()
-#include <algorithm> // To use sort(), next_permutation() etc.
+#include <algorithm> // To use sort(), next_permutation(), min(), max() etc.
 #include <unordered_map> // To allow O(1) mapping access using key->value
 #include <set> // To sort and remove duplicate when inserted
 
@@ -15,6 +15,10 @@
 #define FOR(i,a,b) for(size_t i=a;i<b;i++)
 #define DE(x) cout << #x << ":" << x << endl
 #define all(a) a.begin(),a.end()
+#define cinLine(a) getline(cin,a)
+#define fill(a,b) memset(a, b , sizeof(a)) //fill array a with all bs
+#define init(a) fill(a,0) //initialize array a with all 0s
+#define INF 2e9
 
 //name space here
 using namespace std;
