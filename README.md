@@ -6,18 +6,15 @@ Some templates are written by myself and some are inspired by other talented aut
 
 Contents:
 
- General template for c++ competitive problem solving
+	General template for c++ competitive problem solving
+	Union-Find or Disjointed set implementation
+	Fenwick Tree(Binary Indexed Tree) implementation
+	Segment Tree implementation
+	Graph with DFS and BFS
 
- Union-Find or Disjointed set implementation
 
- Fenwick Tree(Binary Indexed Tree) implementation
-
- Segment Tree implementation
-
- Graph with DFS and BFS
 
 Created by DENG ZISHI on 2/17/17.
-
 Copyright © 2017 DENG ZISHI. All rights reserved.
 
 
