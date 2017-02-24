@@ -3,9 +3,10 @@
 //
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
 #include <string>
+#include <cstdlib> // To use atoi(), abs(), malloc()
 #include <algorithm> // To use sort(), next_permutation() etc.
 #include <unordered_map> // To allow O(1) mapping access using key->value
 #include <set> // To sort and remove duplicate when inserted
