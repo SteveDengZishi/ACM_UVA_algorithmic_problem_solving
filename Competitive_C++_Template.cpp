@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
-#include <algorithm>
+#include <algorithm> // To use sort(), next_permutation() etc.
+#include <unordered_map> // To allow O(1) mapping access using key->value
+#include <set> // To sort and remove duplicate when inserted
 
 //macro here
 #define FOR(i,a,b) for(size_t i=a;i<b;i++)
 #define DE(x) cout << #x << ":" << x << endl
+#define all(a) a.begin(),a.end()
 
 //name space here
 using namespace std;
