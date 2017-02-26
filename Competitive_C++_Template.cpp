@@ -20,6 +20,8 @@
 #define init(a) fill(a,0) //initialize array a with all 0s
 #define INF 2e9
 
+#define multiTestCases //comment out this line if only one test case
+
 //name space here
 using namespace std;
 
@@ -31,6 +33,7 @@ void DEVEC(VI vec){
     FOR(i,0,vec.size()){
         DE(vec[i]);
     }
+    cout<<endl;
 }
 
 //Non-STL Data Structures definition here
@@ -42,8 +45,18 @@ int main(int argc, const char * argv[]) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    //Your code here
+#ifdef multiTestCases
+    //Your code here if there are many test cases
+    VI vec;
+    int x; cin>>x;
+    while(x--){
+        vec.clear();
+        
+    }
+#endif
+#ifndef multiTestCases
+    //Your code here if only one test case
     
-    
+#endif
     return 0;
 }
