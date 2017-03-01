@@ -14,6 +14,12 @@
 //macro here
 #define FOR(i,a,b) for(size_t i=a;i<b;i++)
 #define DE(x) cout << #x << ":" << x << endl
+#define DEIF cout<<"DEBUG: in if"<<endl
+#define DEELSE cout<<"DEBUG: in else"<<endl
+#define DEIFIF cout<<"DEBUG: in if if"<<endl
+#define DEIFELSE cout<<"DEBUG: in if else"<<endl
+#define DEELSEIF cout<<"DEBUG: in else if"<<endl
+#define DEELSEELSE cout<<"DEBUG: in else else"<<endl
 #define all(a) a.begin(),a.end()
 #define cinLine(a) getline(cin,a)
 #define fill(a,b) memset(a, b , sizeof(a)) //fill array a with all bs
