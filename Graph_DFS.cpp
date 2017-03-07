@@ -1,5 +1,6 @@
 //  Graph with DFS
-//
+//  Only partially done
+
 //  Created by DENG ZISHI on 2/20/17.
 //  Copyright © 2017 DENG ZISHI. All rights reserved.
 //
