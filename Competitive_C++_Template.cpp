@@ -10,6 +10,7 @@
 #include <algorithm> // To use sort(), next_permutation(), min(), max() etc.
 #include <unordered_map> // To allow O(1) mapping access using key->value
 #include <set> // To sort and remove duplicate when inserted
+#include <unordered_set> //To remove duplicates and count size
 
 //macro here
 #define FOR(i,a,b) for(size_t i=a;i<b;i++)
@@ -26,7 +27,7 @@
 #define init(a) fill(a,0) //initialize array a with all 0s
 #define INF 2e9
 
-#define multiTestCases //comment out this line if only one test case
+#define defaultTestCase //comment out this line if not default test case given
 
 //name space here
 using namespace std;
@@ -51,8 +52,8 @@ int main(int argc, const char * argv[]) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-#ifdef multiTestCases
-    //Your code here if there are many test cases
+#ifdef defaultTestCase
+    //Your code here if default test case given
     VI vec;
     int x; cin>>x;
     while(x--){
@@ -60,8 +61,8 @@ int main(int argc, const char * argv[]) {
         
     }
 #endif
-#ifndef multiTestCases
-    //Your code here if only one test case
+#ifndef defaultTestCase
+    //Your code here if customized test case
     
 #endif
     return 0;

@@ -60,7 +60,7 @@ struct unionFind{
     }
 };
 
-////Test Code
+//////Test Code
 //int main(int argc, const char * argv[]) {
 //    //optimize iostream
 //    ios_base::sync_with_stdio(false);
