@@ -2,15 +2,16 @@
 //  Copyright © 2017 DENG ZISHI. All rights reserved.
 //
 //  unionFind_string.cpp
-//  Union_find or disjointed_set data structure of strings using map<string,Node*>
+//  Union_find or disjointed_set data structure of strings using map<string,Node*> with count updated!
 
 //individual sets
 struct Node{
     int rank;
+    int cnt;// keep track of count in root node
     string data;
     Node* parent;
     
-    Node(string str):data(str),rank(0),parent(this){}
+    Node(string str):data(str),rank(0),cnt(1),parent(this){}
 };
 
 struct unionFind{
@@ -20,7 +21,8 @@ struct unionFind{
     //construct individual sets on heap and push_back into Vnode uf.push(num);
     void push(string name){
         Node* set=new Node(name);
-        Mnode[name]=set;
+        pair<string,Node*> pair(name,set); // use pair & insert to prevent insertion of duplicates after union
+        Mnode.insert(pair);
     }
     
     //find function with path compression
@@ -41,11 +43,18 @@ struct unionFind{
         Node* yRoot = find(y);
         
         if(xRoot==yRoot) return;
-        if(xRoot->rank < yRoot->rank) xRoot->parent = yRoot;
-        else if(xRoot->rank > yRoot->rank) yRoot->parent = xRoot;
+        if(xRoot->rank < yRoot->rank) {
+            xRoot->parent = yRoot;
+            yRoot->cnt+=xRoot->cnt;
+        }
+        else if(xRoot->rank > yRoot->rank) {
+            yRoot->parent = xRoot;
+            xRoot->cnt+=yRoot->cnt;
+        }
         else{
             yRoot->parent = xRoot;
             xRoot->rank+=1;
+            xRoot->cnt+=yRoot->cnt;
         }
     }
     
@@ -59,4 +68,3 @@ struct unionFind{
         return(find(Mnode[name])->data);
     }
 };
-ß
