@@ -1,28 +1,28 @@
-//  Created by DENG ZISHI on 2/17/17.
+//  Created by DENG ZISHI on 03/09/17.
 //  Copyright © 2017 DENG ZISHI. All rights reserved.
 //
-//  unionFind.cpp
-//  Union_find or disjointed_set data structure implementation
+//  unionFind_string.cpp
+//  Union_find or disjointed_set data structure of strings using map<string,Node*>
 
 //individual sets
 struct Node{
     int rank;
-    int data;
+    string data;
     Node* parent;
     
-    Node(int d):data(d),rank(0),parent(this){}
+    Node(string str):data(str),rank(0),parent(this){}
 };
 
 struct unionFind{
     //pointers to individual set Nodes
-    vector<Node*> Vnode;
+    map<string,Node*> Mnode;
     
     //construct individual sets on heap and push_back into Vnode uf.push(num);
-    void push(int num){
-        Node* set=new Node(num);
-        Vnode.push_back(set);
+    void push(string name){
+        Node* set=new Node(name);
+        Mnode[name]=set;
     }
-
+    
     //find function with path compression
     Node* find(Node* x){
         
@@ -50,35 +50,13 @@ struct unionFind{
     }
     
     //join two sets by its index in Vnode starts with index 0
-    void join(int x,int y){
-        Union(Vnode[x],Vnode[y]);
+    void join(string x,string y){
+        Union(Mnode[x],Mnode[y]);
     }
     
     //search root by index and return its root's data
-    int search(int num){
-        return(find(Vnode[num])->data);
+    string search(string name){
+        return(find(Mnode[name])->data);
     }
 };
-
-//////Test Code
-//int main(int argc, const char * argv[]) {
-//    //optimize iostream
-//    ios_base::sync_with_stdio(false);
-//    cin.tie(NULL);
-//    
-//    //Your code here
-//    unionFind uf;
-//    FOR(i,0,10){
-//        uf.push(i);
-//    }
-//    uf.join(3,4);
-//    uf.join(0,1);
-//    uf.join(1,4);
-//    uf.join(8,9);
-//    FOR(i,0,10){
-//        int num=uf.search(i);
-//        cout<<num<<endl;
-//    }
-//    return 0;
-//}
-
+ß
