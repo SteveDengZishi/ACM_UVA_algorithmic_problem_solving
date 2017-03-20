@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <vector>
 #include <string>
+#include <cstring> // To use memset()
 #include <cstdlib> // To use atoi(), abs(), malloc()
 #include <algorithm> // To use sort(), next_permutation(), min(), max() etc.
 #include <unordered_map> // To allow O(1) mapping access using key->value
