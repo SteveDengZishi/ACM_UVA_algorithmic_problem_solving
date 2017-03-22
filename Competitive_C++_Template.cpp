@@ -37,11 +37,20 @@ using namespace std;
 typedef vector<int> VI;
 
 //debugging functions here
-void DEVEC(VI vec){
+template<class T>
+void DEVEC(vector<T> vec){
     FOR(i,0,vec.size()){
         DE(vec[i]);
     }
     cout<<endl;
+}
+
+template<class T>
+void DEARRAY(T array[],int num=20){
+	FOR(i,0,num+1){
+		cout<<array[i]<<" ";
+	}
+	cout<<endl;
 }
 
 //Non-STL Data Structures definition here
