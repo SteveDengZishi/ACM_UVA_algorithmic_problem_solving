@@ -53,8 +53,12 @@ void DEARRAY(T array[],int num=20){
 	cout<<endl;
 }
 
-//Non-STL Data Structures definition here
-
+//functions, global variables, comparators & Non-STL Data Structures definition here
+template<class T>
+bool pairCmp(pair<T,T> a,pair<T,T> b)  {      
+    if(a.first!=b.first)      return a.first<b.first;      
+    return a.second<b.second;  
+ }
 
 //start of main()
 int main(int argc, const char * argv[]) {
