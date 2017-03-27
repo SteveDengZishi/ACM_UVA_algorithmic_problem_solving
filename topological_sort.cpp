@@ -74,7 +74,7 @@ void Graph::topologicalSort()
         topologicalSortUtil(i, visited, Stack);
  
     // Print contents of stack
-    while (Stack.empty() == false)
+    while (!Stack.empty())
     {
         cout << Stack.top() << " ";
         Stack.pop();
