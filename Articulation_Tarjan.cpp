@@ -1,9 +1,6 @@
-/*
- Articulation points
- undirected graph
- connected graph
- nodes are numbered from 1 to n
- */
+//  Created by DENG ZISHI on 03/31/17.
+//  Copyright © 2017 DENG ZISHI. All rights reserved.
+// Articulation points from an undirected graph nodes are numbered from 1 to n
 
 #include <bits/stdc++.h>
 using namespace std;
