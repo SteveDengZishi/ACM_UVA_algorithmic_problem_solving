@@ -37,6 +37,8 @@ using namespace std;
 
 //typedef here
 typedef vector<int> VI;
+typedef vector<pair<int,pair<int,int>>> Edges;
+typedef pair<int,int> PII;
 
 //debugging functions here
 template<class T>
