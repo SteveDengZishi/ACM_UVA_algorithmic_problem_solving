@@ -17,6 +17,13 @@ struct unionFind{
     //pointers to individual set Nodes
     vector<Node*> Vnode;
     
+    //constructor
+    unionFind(int num){
+        FOR(i,0,num){
+            push(i);
+        }
+    }
+    
     //construct individual sets on heap and push_back into Vnode uf.push(num);
     void push(int num){
         Node* set=new Node(num);
@@ -67,10 +74,8 @@ struct unionFind{
 //    cin.tie(NULL);
 //    
 //    //Your code here
-//    unionFind uf;
-//    FOR(i,0,10){
-//        uf.push(i);
-//    }
+//    unionFind uf(10);
+//
 //    uf.join(3,4);
 //    uf.join(0,1);
 //    uf.join(1,4);
