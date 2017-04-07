@@ -30,8 +30,6 @@
 #define INIT(a) FILL(a,0) //initialize array a with all 0s
 #define INF 2e9
 
-#define defaultTestCase //comment out this line if not default test case given
-
 //name space here
 using namespace std;
 
@@ -58,30 +56,16 @@ void DEARRAY(T array[],int num=20){
 }
 
 //functions, global variables, comparators & Non-STL Data Structures definition here
-template<class T>
-bool pairCmp(pair<T,T> a,pair<T,T> b)  {      
-    if(a.first!=b.first)      return a.first<b.first;      
-    return a.second<b.second;  
- }
+
 
 //start of main()
 int main(int argc, const char * argv[]) {
     //optimize iostream
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    //reminder to clear vector between test cases
+    //Your code here
     
-#ifdef defaultTestCase
-    //Your code here if default test case given
-    VI vec;
-    int x; cin>>x;
-    while(x--){
-        vec.clear();
-        
-    }
-#endif
-#ifndef defaultTestCase
-    //Your code here if customized test case
-    
-#endif
+
     return 0;
 }
