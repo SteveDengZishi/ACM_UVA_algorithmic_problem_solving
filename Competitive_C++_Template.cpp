@@ -8,6 +8,7 @@
 #include <string>
 #include <list> // To use STL linked-list in dfs topological sort
 #include <stack> // To use STL stack in topological sort
+#include <queue> // To use STL queue in bfs, dijkstra's, maxflow
 #include <cstring> // To use memset()
 #include <cstdlib> // To use atoi(), abs(), malloc()
 #include <algorithm> // To use sort(), next_permutation(), min(), max() etc.
