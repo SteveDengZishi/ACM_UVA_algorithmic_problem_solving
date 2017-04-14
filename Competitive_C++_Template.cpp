@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <vector>
 #include <string>
+#include <cmath> // To use sqrt()
 #include <list> // To use STL linked-list in dfs topological sort
 #include <stack> // To use STL stack in topological sort
 #include <queue> // To use STL queue in bfs, dijkstra's, maxflow
