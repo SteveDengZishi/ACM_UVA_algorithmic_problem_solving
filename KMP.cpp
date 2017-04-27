@@ -1,5 +1,5 @@
-// C++ program for implementation of KMP pattern searching
-// algorithm
+//  C++ program for implementation of KMP pattern searching
+//  algorithm
 //
 //  Created by Steve DengZishi on 4/25/17.
 //  Copyright © 2017 Steve DengZishi. All rights reserved.
@@ -22,10 +22,10 @@
 
 using namespace std;
 
-void computeLPSArray(string pat, int M, int* lps);
+void computeLPSArray(string pat, int M, int *lps);
 
 // Prints occurrences of txt[] in pat[]
-void KMPSearch(string pat, string txt)
+int KMPSearch(string pat, string txt)
 {
     int M = pat.size();
     int N = txt.size();
@@ -50,7 +50,9 @@ void KMPSearch(string pat, string txt)
         if (j == M)
         {
             printf("Found pattern at index %d \n", i-j);
+            int index = i-j;
             j = lps[j-1];
+            return index;
         }
         
         // mismatch after j matches
@@ -64,10 +66,12 @@ void KMPSearch(string pat, string txt)
                 i = i+1;
         }
     }
+    printf("There is no matching substring \n");
+    return -1;
 }
 
 // Fills lps[] for given patttern pat[0..M-1]
-void computeLPSArray(string pat, int M, string lps)
+void computeLPSArray(string pat, int M, int *lps)
 {
     // length of the previous longest prefix suffix
     int len = 0;
@@ -108,8 +112,20 @@ void computeLPSArray(string pat, int M, string lps)
 // Driver program to test above function
 int main()
 {
-    string txt = "ABABDABACDABABCABAB";
+    string txt = "ABABDABACDABABCABAABABABCABAB";
     string pat = "ABABCABAB";
-    KMPSearch(pat, txt);
+    int index = KMPSearch(pat, txt);
+    cout<<index<<endl;
+    
+    string txt2 = "No body can stop me now";
+    string pat2 = "stop";
+    index = KMPSearch(pat2, txt2);
+    cout<<index<<endl;
+    
+    string txt3 = "I love basketball";
+    string pat3 = "soccer";
+    index = KMPSearch(pat3, txt3);
+    cout<<index<<endl;
+    
     return 0;
 }
