@@ -5,15 +5,30 @@
 //  Copyright © 2017 Steve DengZishi. All rights reserved.
 //
 
-#include<bits/stdc++.h>
+#include <iostream>
+#include <cstdio>
+#include <vector>
+#include <string>
+#include <cmath> // To use sqrt()
+#include <list> // To use STL linked-list in dfs topological sort
+#include <stack> // To use STL stack in topological sort
+#include <queue> // To use STL queue in bfs, dijkstra's, maxflow
+#include <cstring> // To use memset()
+#include <cstdlib> // To use atoi(), abs(), malloc()
+#include <algorithm> // To use sort(), next_permutation(), min(), max() etc.
+#include <unordered_map> // To allow O(1) mapping access using key->value
+#include <set> // To sort and remove duplicate when inserted
+#include <unordered_set> //To remove duplicates and count size
 
-void computeLPSArray(char *pat, int M, int *lps);
+using namespace std;
+
+void computeLPSArray(string pat, int M, int* lps);
 
 // Prints occurrences of txt[] in pat[]
-void KMPSearch(char *pat, char *txt)
+void KMPSearch(string pat, string txt)
 {
-    int M = strlen(pat);
-    int N = strlen(txt);
+    int M = pat.size();
+    int N = txt.size();
     
     // create lps[] that will hold the longest prefix suffix
     // values for pattern
@@ -52,7 +67,7 @@ void KMPSearch(char *pat, char *txt)
 }
 
 // Fills lps[] for given patttern pat[0..M-1]
-void computeLPSArray(char *pat, int M, int *lps)
+void computeLPSArray(string pat, int M, string lps)
 {
     // length of the previous longest prefix suffix
     int len = 0;
@@ -93,8 +108,8 @@ void computeLPSArray(char *pat, int M, int *lps)
 // Driver program to test above function
 int main()
 {
-    char *txt = "ABABDABACDABABCABAB";
-    char *pat = "ABABCABAB";
+    string txt = "ABABDABACDABABCABAB";
+    string pat = "ABABCABAB";
     KMPSearch(pat, txt);
     return 0;
 }
