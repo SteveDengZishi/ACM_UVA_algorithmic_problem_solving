@@ -8,3 +8,5 @@
 //  3. Check whether left turn to the point on top of stack
 //  4. Push the point on to the stack if left turn
 //  5. Pop the point if right turn & repeat the checking process (not on the hull)
+//
+//  Running time: O(nlogn) sorting + O(n) scanning  OVERALL O(nlogn)
