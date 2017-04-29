@@ -5,4 +5,5 @@
 //
 //  1. Anchor point P0 is the one with lowest y coordinates (leftmost if tied)
 //  2. Sort by polar angles (counter clockwise order)
-//  3. 
+//  3. Push points on to the stack
+//  4. Pop the point if not on the hull
