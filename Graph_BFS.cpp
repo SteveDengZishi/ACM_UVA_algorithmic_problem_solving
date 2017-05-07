@@ -1,5 +1,5 @@
-//  Created by DENG ZISHI on 4/20/17.
-//  Copyright © 2017 DENG ZISHI. All rights reserved.
+//  Created by Steve DengZishi on 5/6/17.
+//  Copyright © 2017 Steve DengZishi. All rights reserved.
 
 // Program to print BFS traversal from a given source vertex. BFS(int s)
 // traverses vertices reachable from s.
@@ -66,23 +66,27 @@ void Graph::BFS(int s)
             }
         }
     }
+    cout<<"\n";
 }
 
 // Driver program to test methods of graph class
 int main()
 {
     // Create a graph given in the above diagram
-    Graph g(4);
+    Graph g(8);
     g.addEdge(0, 1);
-    g.addEdge(0, 2);
     g.addEdge(1, 2);
-    g.addEdge(2, 0);
-    g.addEdge(2, 3);
-    g.addEdge(3, 3);
+    g.addEdge(1, 4);
+    g.addEdge(0, 3);
+    g.addEdge(3, 4);
+    g.addEdge(0, 5);
+    g.addEdge(5, 6);
+    g.addEdge(3, 6);
+    g.addEdge(6, 7);
     
     cout << "Following is Breadth First Traversal "
-    << "(starting from vertex 2) \n";
-    g.BFS(2);
+    << "(starting from vertex 0) \n";
+    g.BFS(0); // Output: 0 1 3 5 2 4 6 7
     
     return 0;
 }
