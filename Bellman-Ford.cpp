@@ -1,5 +1,11 @@
-// A C / C++ program for Bellman-Ford's single source
-// shortest path algorithm.
+//  Created by Steve DengZishi on 5/8/17.
+//  Copyright © 2017 Steve DengZishi. All rights reserved.
+//
+
+//  A C / C++ program for Bellman-Ford's single source
+//  shortest path algorithm.
+//  can be used on negative edges, and detect negative cycle
+//  O(VE) hence O(V^2) on sparse graph and O(V^3) on dense graph
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,7 +48,7 @@ void printArr(int dist[], int n)
 {
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < n; ++i)
-        printf("%d \t\t %d\n", i, dist[i]);
+        printf("  %d \t\t %d\n", i, dist[i]);
 }
 
 // The main function that finds shortest distances from src to
@@ -63,6 +69,10 @@ void BellmanFord(struct Graph* graph, int src)
     // Step 2: Relax all edges |V| - 1 times. A simple shortest
     // path from src to any other vertex can have at-most |V| - 1
     // edges
+    
+    // V-1 relaxation is the worst case if each time the last edge get
+    // updated and lead to previous vertex to be updated
+    // Hence possible improvement is to reduce this V-1 relaxation process
     for (int i = 1; i <= V-1; i++)
     {
         for (int j = 0; j < E; j++)
@@ -91,6 +101,12 @@ void BellmanFord(struct Graph* graph, int src)
     printArr(dist, V);
     
     return;
+}
+
+void addEdge(int src, int dest, int weight, struct Graph* graph, int index){
+    graph->edge[index].src=src;
+    graph->edge[index].dest=dest;
+    graph->edge[index].weight=weight;
 }
 
 // Driver program to test above functions
