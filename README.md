@@ -30,11 +30,11 @@ Contents:
         Depth First Search(DFS) O(V+E)
 
         WEIGHTED SHORTEST PATH:
-        Dijkstra's algorithm solves the single-source shortest path problem. O(ElogV) E times logV using extract min from heap
-        Bellman–Ford algorithm solves the single-source problem if edge weights may be negative. O(VE) O(V^2) on sparse O(V^3) on dense.
-        Floyd–Warshall algorithm solves all pairs shortest paths. O(V^3) dp three for loop ijk
-        //Johnson's algorithm solves all pairs shortest paths, and may be faster than Floyd–Warshall on sparse graphs.
-        SPFA(Shortest Path Faster Algorithm) Improve performance of Bellman-Ford
+        Dijkstra's algorithm --- single-source shortest path problem. O(ElogV) E times logV using extract min from heap
+        Bellman–Ford algorithm --- single-source problem if edge weights may be negative. O(VE) O(V^2) on sparse O(V^3) on dense.
+        Floyd–Warshall algorithm --- all pairs shortest paths. O(V^3) dp three for loop ijk
+        //Johnson's algorithm --- all pairs shortest paths, and may be faster than Floyd–Warshall on sparse graphs.
+        SPFA(Shortest Path Faster Algorithm) --- Improve performance of Bellman-Ford
         
         UNWEIGHTED ORDERING:
         Topological Sort(dfs + stack)
