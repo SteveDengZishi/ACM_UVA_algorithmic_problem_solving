@@ -19,9 +19,9 @@ Contents:
 
     Techniques:
 
-        Long Increasing Subseqence(LIS)
-        Kadane's algo(Maximum Sum Subarray)
-        DP+MEMO
+        Longest Increasing Subseqence(LIS)
+        Maximum Sum Subarray(Kadane's Algorithm)
+        Dynamic Programming + Memoization
 
     Graph Algorithms:
         
