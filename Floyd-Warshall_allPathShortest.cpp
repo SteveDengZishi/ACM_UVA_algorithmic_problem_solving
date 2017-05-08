@@ -1,3 +1,7 @@
+//  Created by Steve DengZishi on 5/8/17.
+//  Copyright © 2017 Steve DengZishi. All rights reserved.
+//
+
 // C++ Program for Floyd Warshall Algorithm
 // All pairs shortest path algorithm - precompute all shortest path using dp for large queries in O(n^3)
 
@@ -18,6 +22,7 @@ void floydWarshall (int graph[][V])
 {
     /* dist[][] will be the output matrix that will finally have the shortest
      distances between every pair of vertices */
+    // if you need to backtrack path, you need to define another matrix to store parents
     int dist[V][V], i, j, k;
     
     /* Initialize the solution matrix same as input graph matrix. Or
@@ -76,14 +81,17 @@ void printSolution(int dist[][V])
 int main()
 {
     /* Let us create the following weighted graph
-     10
+           10
      (0)------->(3)
-     |         /|\
-     5 |          |
-     |          | 1
+      |         /|\
+    5 |          |
+      |          | 1
      \|/         |
      (1)------->(2)
-     3           */
+            3           */
+    
+    // normally input is not given like this, you need to memset(graph,INF,sizeof(graph))
+    // then using addEdge(start, end, weight) to set the weight, note that graph[i][i] = 0;
     int graph[V][V] = {
         {0,   5,  INF, 10},
         {INF, 0,   3, INF},
