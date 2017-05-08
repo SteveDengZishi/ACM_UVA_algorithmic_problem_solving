@@ -54,6 +54,7 @@ void printArr(int dist[], int n)
 // The main function that finds shortest distances from src to
 // all other vertices using Bellman-Ford algorithm.  The function
 // also detects negative weight cycle
+
 void BellmanFord(struct Graph* graph, int src)
 {
     int V = graph->V;
@@ -73,9 +74,10 @@ void BellmanFord(struct Graph* graph, int src)
     // V-1 relaxation is the worst case if each time the last edge get
     // updated and lead to previous vertex to be updated
     // Hence possible improvement is to reduce this V-1 relaxation process
-    for (int i = 1; i <= V-1; i++)
+    
+    for (int i = 1; i <= V-1; i++) // loop V-1 times
     {
-        for (int j = 0; j < E; j++)
+        for (int j = 0; j < E; j++) // looping through the edges in the graph
         {
             int u = graph->edge[j].src;
             int v = graph->edge[j].dest;
@@ -89,6 +91,7 @@ void BellmanFord(struct Graph* graph, int src)
     // guarantees shortest distances if graph doesn't contain
     // negative weight cycle.  If we get a shorter path, then there
     // is a cycle.
+    
     for (int i = 0; i < E; i++)
     {
         int u = graph->edge[i].src;
