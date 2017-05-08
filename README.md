@@ -4,7 +4,7 @@ Using C++ 5.3.0 with -std=c++11
 
 Some templates are written by myself and some are inspired by other talented authors and then modified to either general or specific usage.
 
-Contents:
+Contents Table:
     
     Template:
 
