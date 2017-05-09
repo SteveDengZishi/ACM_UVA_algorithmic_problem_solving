@@ -1,3 +1,7 @@
+// C++ program for Kruskal's algorithm to find Minimum
+// Spanning Tree of a given connected, undirected and
+// weighted graph
+
 #include <iostream>
 #include <cstdio>
 #include <vector>
@@ -12,185 +16,158 @@
 #include <set> // To sort and remove duplicate when inserted
 #include <unordered_set> //To remove duplicates and count size
 
-//macro here
-#define FOR(i,a,b) for(size_t i=a;i<b;i++)
-#define DE(x) cout << #x << ":" << x << endl
-#define DEIF cout<<"DEBUG: in if"<<endl
-#define DEELSE cout<<"DEBUG: in else"<<endl
-#define DEIFIF cout<<"DEBUG: in if if"<<endl
-#define DEIFELSE cout<<"DEBUG: in if else"<<endl
-#define DEELSEIF cout<<"DEBUG: in else if"<<endl
-#define DEELSEELSE cout<<"DEBUG: in else else"<<endl
-#define ALL(a) a.begin(),a.end()
-#define CINLINE(a) getline(cin,a)
-#define FILL(a,b) memset(a, b , sizeof(a)) //fill array a with all bs
-#define INIT(a) FILL(a,0) //initialize array a with all 0s
-#define INF 2e9
-
-#define defaultTestCase //comment out this line if not default test case given
-#define maximumSpanning
-//name space here
 using namespace std;
 
-//typedef here
-typedef vector<int> VI;
-typedef vector<pair<int,pair<int,int>>> Edges;
-typedef pair<int,int> PII;
+// Creating shortcut for an integer pair
+typedef  pair<int, int> iPair;
 
-//debugging functions here
-template<class T>
-void DEVEC(vector<T> vec){
-    FOR(i,0,vec.size()){
-        DE(vec[i]);
+// Structure to represent a graph
+struct Graph
+{
+    int V, E;
+    vector<pair<int, iPair>> edges;
+    
+    // Constructor
+    Graph(int V, int E)
+    {
+        this->V = V;
+        this->E = E;
     }
-    cout<<endl;
-}
-
-template<class T>
-void DEARRAY(T array[],int num=20){
-    FOR(i,0,num+1){
-        cout<<array[i]<<" ";
+    
+    // Utility function to add an edge
+    void addEdge(int u, int v, int w)
+    {
+        edges.push_back({w, {u, v}});
     }
-    cout<<endl;
-}
+    
+    // Function to find MST using Kruskal's
+    // MST algorithm
+    int kruskalMST();
+};
 
-//functions, global variables, comparators & Non-STL Data Structures definition here
-template<class T>
-bool pairCmp(pair<T,T> a,pair<T,T> b)  {
-    if(a.first!=b.first)      return a.first<b.first;
-    return a.second<b.second;
-}
-
-struct edgeCmp{
-    //mapCmp functor in deciding minimum spanning tree or maximum spanning tree
-    bool operator()(pair<int,pair<int,int>> a, pair<int,pair<int,int>> b){
-#ifdef maximumSpanning
-        return a.first>=b.first;
-#endif
-#ifndef maximumSpanning
-        return a.first<=b.first;
-#endif
+// To represent Disjoint Sets
+struct DisjointSets
+{
+    int *parent, *rnk;
+    int n;
+    
+    // Constructor.
+    DisjointSets(int n)
+    {
+        // Allocate memory
+        this->n = n;
+        parent = new int[n+1];
+        rnk = new int[n+1];
+        
+        // Initially, all vertices are in
+        // different sets and have rank 0.
+        for (int i = 0; i <= n; i++)
+        {
+            rnk[i] = 0;
+            
+            //every element is parent of itself
+            parent[i] = i;
+        }
+    }
+    
+    // Find the parent of a node 'u'
+    // Path Compression
+    int find(int u)
+    {
+        /* Make the parent of the nodes in the path
+         from u--> parent[u] point to parent[u] */
+        if (u != parent[u])
+            parent[u] = find(parent[u]);
+        return parent[u];
+    }
+    
+    // Union by rank
+    void merge(int x, int y)
+    {
+        x = find(x), y = find(y);
+        
+        /* Make tree with smaller height
+         a subtree of the other tree  */
+        if (rnk[x] > rnk[y])
+            parent[y] = x;
+        else // If rnk[x] <= rnk[y]
+            parent[x] = y;
+        
+        if (rnk[x] == rnk[y])
+            rnk[y]++;
     }
 };
 
-//individual sets
-struct Node{
-    int rank;
-    int data;
-    Node* parent;
-    
-    Node(int d):data(d),rank(0),parent(this){}
-};
+/* Functions returns weight of the MST*/
 
-struct unionFind{
-    //pointers to individual set Nodes
-    vector<Node*> Vnode;
+int Graph::kruskalMST()
+{
+    int mst_wt = 0; // Initialize result
     
-    //constructor
-    unionFind(int num){
-        FOR(i,0,num){
-            push(i);
-        }
-    }
-    //construct individual sets on heap and push_back into Vnode uf.push(num);
-    void push(int num){
-        Node* set=new Node(num);
-        Vnode.push_back(set);
-    }
+    // Sort edges in increasing order on basis of cost
+    sort(edges.begin(), edges.end());
     
-    //find function with path compression
-    Node* find(Node* x){
-        
-        //    cout<<"in find"<<endl;
-        
-        if(x->parent!=x) x->parent=find(x->parent);
-        return x->parent;
-    }
+    // Create disjoint sets
+    DisjointSets ds(V);
     
-    //Union
-    void Union(Node* x,Node* y){
+    // Iterate through all sorted edges
+    vector< pair<int, iPair> >::iterator it;
+    for (it=edges.begin(); it!=edges.end(); it++)
+    {
+        int u = it->second.first;
+        int v = it->second.second;
         
-        //    cout<<"in union"<<endl;
+        int set_u = ds.find(u);
+        int set_v = ds.find(v);
         
-        Node* xRoot = find(x);
-        Node* yRoot = find(y);
-        
-        if(xRoot==yRoot) return;
-        if(xRoot->rank < yRoot->rank) xRoot->parent = yRoot;
-        else if(xRoot->rank > yRoot->rank) yRoot->parent = xRoot;
-        else{
-            yRoot->parent = xRoot;
-            xRoot->rank+=1;
+        // Check if the selected edge is creating
+        // a cycle or not (Cycle is created if u
+        // and v belong to same set)
+        if (set_u != set_v)
+        {
+            // Current edge will be in the MST
+            // so print it
+            cout << u << " - " << v << endl;
+            
+            // Update MST weight
+            mst_wt += it->first;
+            
+            // Merge two sets
+            ds.merge(set_u, set_v);
         }
     }
     
-    //join two sets by its index in Vnode starts with index 0
-    void join(int x,int y){
-        Union(Vnode[x],Vnode[y]);
-    }
-    
-    //search root by index and return its root's data
-    int search(int num){
-        return(find(Vnode[num])->data);
-    }
-};
-
-int cnt=0;int mini=INF;
-Edges edges;
-edgeCmp cmpE;
-
-int kruskal(unionFind uf){
-    mini=INF;
-    int result=0;//minimum || maximum spanning
-    stack<PII> stk;//To store path of the spanning
-    
-    sort(ALL(edges),cmpE);//sort in non-decreasing or non-increasing order
-    
-    FOR(i,0,edges.size()){
-        //if the two pairs are not connected component
-        if(uf.search(edges[i].second.first)!=uf.search(edges[i].second.second)) {
-            //join them together
-            uf.join(edges[i].second.first, edges[i].second.second);
-            //push to stack
-            stk.push(edges[i].second);
-            //caculate spanning
-            result+=edges[i].first;
-            if(edges[i].first<mini) mini=edges[i].first;
-        }
-    }
-    return result;
+    return mst_wt;
 }
 
-//start of main()
-int main(int argc, const char * argv[]) {
-    //optimize iostream
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+// Driver program to test above functions
+int main()
+{
+    /* Let us create above shown weighted
+     and unidrected graph */
+    int V = 9, E = 14;
+    Graph g(V, E);
     
-#ifdef defaultTestCase
-    //Your code here if default test case given
+    //  making above shown graph
+    g.addEdge(0, 1, 4);
+    g.addEdge(0, 7, 8);
+    g.addEdge(1, 2, 8);
+    g.addEdge(1, 7, 11);
+    g.addEdge(2, 3, 7);
+    g.addEdge(2, 8, 2);
+    g.addEdge(2, 5, 4);
+    g.addEdge(3, 4, 9);
+    g.addEdge(3, 5, 14);
+    g.addEdge(4, 5, 10);
+    g.addEdge(5, 6, 2);
+    g.addEdge(6, 7, 1);
+    g.addEdge(6, 8, 6);
+    g.addEdge(7, 8, 7);
     
-    int x; cin>>x;
-    while(x--){
-        cnt++;
-        edges.clear();
-        int a,b; cin>>a>>b;
-        unionFind uf(a);
-        int start,end,weight;
-        while(b--){
-            cin>>start>>end>>weight;
-            if(start==end) continue;
-            PII p(start, end);
-            pair<int,PII> ed(weight,p);
-            edges.push_back(ed);
-        }
-        int result=kruskal(uf);
-        cout<<"Case #"<<cnt<<": "<<result<<endl;
-    }
-#endif
-#ifndef defaultTestCase
-    //Your code here if customized test case
+    cout << "Edges of MST are \n";
+    int mst_wt = g.kruskalMST();
     
-#endif
+    cout << "\nWeight of MST is " << mst_wt;
+    
     return 0;
 }
