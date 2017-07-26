@@ -16,6 +16,7 @@
 #include <unordered_map> // To allow O(1) mapping access using key->value
 #include <set> // To sort and remove duplicate when inserted
 #include <unordered_set> //To remove duplicates and count size
+#include <fstream> //To use c++ style read stream from file
 
 //macro here
 #define FOR(i,a,b) for(size_t i=a;i<b;i++)
@@ -30,7 +31,6 @@
 #define CINLINE(a) getline(cin,a)
 #define FILL(a,b) memset(a, b , sizeof(a)) //fill array a with all bs
 #define INIT(a) FILL(a,0) //initialize array a with all 0s
-#define INF 2e9
 
 //name space here
 using namespace std;
