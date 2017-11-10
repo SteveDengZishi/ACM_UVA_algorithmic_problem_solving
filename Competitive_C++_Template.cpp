@@ -50,8 +50,8 @@ void DEVEC(vector<T> vec){
 }
 
 template<class T>
-void DEARRAY(T array[],int num=20){
-	FOR(i,0,num+1){
+void DEARRAY(T array[],int num=10){
+	FOR(i,0,num){
 		cout<<array[i]<<" ";
 	}
 	cout<<endl;
@@ -63,9 +63,9 @@ void DEARRAY(T array[],int num=20){
 //start of main()
 int main(int argc, const char * argv[]) {
     //optimize iostream
+    //do not mix usage of printf() & cout after optimization
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    //reminder to clear vector between test cases
     //Your code here
     
 
